@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var config = require('./config');
+
 // connect to MongoDB
 require('./models/Posts');
 require('./models/Comments');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/news');
+mongoose.connect(config.mongoUrl);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
